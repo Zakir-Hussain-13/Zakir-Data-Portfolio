@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test 2 - Zakir Hussain | Data Analyst Portfolio</title>
+  <meta name="description" content="Test Blog Post 2 - SQL Best Practices and Advanced Querying Techniques by Zakir Hussain." />
+  <link rel="canonical" href="https://codeverse-team.github.io/Zakir-Data-Portfolio/blog/test-2.html" />
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="../assets/images/avatar-1.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Inline styles for blog layout -->
+  <style>
+    html { scroll-behavior: smooth; }
+    
+    /* Blog Page Layout */
+    .blog-page-container {
+      display: flex;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .blog-main-content {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .blog-sidebar {
+      width: 300px;
+      flex-shrink: 0;
+    }
+    
+    /* Blog Post Content */
+    .blog-post-full {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+    
+    .blog-post-header {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--light-gray);
+    }
+    
+    .blog-post-title {
+      font-size: 2rem;
+      color: var(--eerie-black);
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+    
+    .blog-post-meta {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      color: var(--gray-web);
+      font-size: 0.9rem;
+    }
+    
+    .blog-category-badge {
+      background: linear-gradient(135deg, hsl(216, 72%, 56%), hsl(216, 72%, 66%));
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+    
+    .blog-post-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
+    
+    .blog-post-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--sonic-silver);
+    }
+    
+    .blog-post-body p {
+      margin-bottom: 20px;
+    }
+    
+    .blog-post-body h2 {
+      font-size: 1.5rem;
+      color: var(--eerie-black);
+      margin: 30px 0 15px;
+    }
+    
+    .blog-post-body h3 {
+      font-size: 1.25rem;
+      color: var(--eerie-black);
+      margin: 25px 0 12px;
+    }
+    
+    .blog-post-body ul {
+      margin: 15px 0;
+      padding-left: 25px;
+    }
+    
+    .blog-post-body li {
+      margin-bottom: 10px;
+    }
+    
+    .blog-post-body code {
+      background: var(--light-gray);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      color: hsl(216, 72%, 56%);
+    }
+    
+    .blog-post-body pre {
+      background: var(--eerie-black);
+      color: var(--white);
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    
+    .blog-post-body blockquote {
+      border-left: 4px solid hsl(216, 72%, 56%);
+      padding-left: 20px;
+      margin: 25px 0;
+      font-style: italic;
+      color: var(--gray-web);
+    }
+    
+    /* Sidebar Styles */
+    .blog-sidebar-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
+    }
+    
+    .sidebar-title {
+      font-size: 1.2rem;
+      color: var(--eerie-black);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--light-gray);
+    }
+    
+    .recent-posts-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .recent-post-item {
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .recent-post-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .recent-post-link {
+      text-decoration: none;
+      color: var(--sonic-silver);
+      transition: color 0.3s ease;
+      display: block;
+    }
+    
+    .recent-post-link:hover {
+      color: hsl(216, 72%, 56%);
+    }
+    
+    .recent-post-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    
+    .recent-post-date {
+      font-size: 0.85rem;
+      color: var(--gray-web);
+    }
+    
+    .categories-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .category-item {
+      margin-bottom: 12px;
+    }
+    
+    .category-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      color: var(--sonic-silver);
+      padding: 10px 15px;
+      background: var(--light-gray);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .category-link:hover {
+      background: hsl(216, 72%, 56%);
+      color: white;
+      transform: translateX(5px);
+    }
+    
+    .category-count {
+      background: var(--eerie-black);
+      color: white;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+    }
+    
+    .tags-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .tag-item {
+      background: var(--light-gray);
+      color: var(--sonic-silver);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .tag-item:hover {
+      background: hsl(216, 72%, 56%);
+      color: white;
+    }
+    
+    .back-to-blog-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, hsl(216, 72%, 56%), hsl(216, 72%, 66%));
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .back-to-blog-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(54, 114, 217, 0.3);
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .blog-page-container {
+        flex-direction: column;
+      }
+      
+      .blog-sidebar {
+        width: 100%;
+      }
+      
+      .blog-post-full {
+        padding: 25px;
+      }
+      
+      .blog-post-title {
+        font-size: 1.6rem;
+      }
+      
+      .blog-post-image {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- SIDEBAR -->
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+        <figure class="avatar-box">
+          <img src="../assets/images/my-avatar.png" alt="Zakir Hussain" width="84" />
+        </figure>
+        <div class="info-content">
+          <h1 class="name" title="Zakir Hussain">Zakir Hussain</h1>
+          <p class="title">Data Analyst</p>
+        </div>
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+      </div>
+      <div class="sidebar-info_more">
+        <div class="separator"></div>
+        <ul class="contacts-list">
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:zakirhussain132006@gmail.com" class="contact-link">zakirhussain132006@gmail.com</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a href="tel:+918828770829" class="contact-link">+91 8828770829</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <address>Mumbai, Maharashtra, India</address>
+            </div>
+          </li>
+        </ul>
+        <div class="separator"></div>
+        <ul class="social-list">
+          <li class="social-item"><a href="https://www.linkedin.com/in/zakirhussain13/" target="_blank" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+          <li class="social-item"><a href="https://codeverse-team.github.io/Zakir-Data-Portfolio/" target="_blank" class="social-link"><ion-icon name="globe-outline"></ion-icon></a></li>
+          <li class="social-item"><a href="https://github.com/CodeVerse-team" target="_blank" class="social-link"><ion-icon name="logo-github"></ion-icon></a></li>
+        </ul>
+      </div>
+    </aside>
+    
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+      <!-- NAVBAR -->
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a href="../index.html#about" class="navbar-link">About</a></li>
+          <li class="navbar-item"><a href="../index.html#resume" class="navbar-link">Resume</a></li>
+          <li class="navbar-item"><a href="../index.html#portfolio" class="navbar-link">Portfolio</a></li>
+          <li class="navbar-item"><a href="../index.html#blog" class="navbar-link active">Blog</a></li>
+          <li class="navbar-item"><a href="../index.html#contact" class="navbar-link">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <!-- BLOG PAGE CONTAINER -->
+      <div class="blog-page-container">
+        <!-- Main Blog Content -->
+        <div class="blog-main-content">
+          <a href="../index.html#blog" class="back-to-blog-btn">
+            <ion-icon name="arrow-back"></ion-icon>
+            Back to Blog
+          </a>
+          
+          <article class="blog-post-full">
+            <header class="blog-post-header">
+              <h1 class="blog-post-title">Test 2 - SQL Best Practices for Data Analysts</h1>
+              <div class="blog-post-meta">
+                <span class="blog-category-badge">SQL Tutorials</span>
+                <time datetime="2025-01-20">January 20, 2025</time>
+                <span>•</span>
+                <span>7 min read</span>
+              </div>
+            </header>
+            
+            <img src="../assets/images/blog-2.jpg" alt="SQL Best Practices" class="blog-post-image" loading="lazy" />
+            
+            <div class="blog-post-body">
+              <p>Welcome to my second test blog post! In this article, I'll share essential SQL best practices that have helped me during my data analysis projects and my #100DaysOfAnalytics journey.</p>
+              
+              <blockquote>
+                "SQL is the superpower of data analysts. Master it, and you unlock the ability to talk directly to your data." 
+              </blockquote>
+              
+              <h2>1. Always Use Aliases for Tables</h2>
+              <p>Using table aliases makes your queries more readable and easier to write:</p>
+              
+              <pre><code>-- Instead of this
+SELECT employees.name, departments.department_name
+FROM employees
+JOIN departments ON employees.department_id = departments.id;
+
+-- Do this
+SELECT e.name, d.department_name
+FROM employees e
+JOIN departments d ON e.department_id = d.id;</code></pre>
+              
+              <h2>2. Be Specific with SELECT Statements</h2>
+              <p>Avoid using <code>SELECT *</code> in production queries. Specify only the columns you need:</p>
+              
+              <pre><code>-- Bad practice
+SELECT * FROM customers;
+
+-- Good practice
+SELECT customer_id, first_name, last_name, email, signup_date
+FROM customers;</code></pre>
+              
+              <h3>Benefits of being specific:</h3>
+              <ul>
+                <li>Improves query performance</li>
+                <li>Reduces network traffic</li>
+                <li>Makes code more maintainable</li>
+                <li>Prevents breaking changes when schema evolves</li>
+              </ul>
+              
+              <h2>3. Master JOIN Types</h2>
+              <p>Understanding different JOIN types is crucial for any data analyst:</p>
+              
+              <ul>
+                <li><strong>INNER JOIN:</strong> Returns matching records from both tables</li>
+                <li><strong>LEFT JOIN:</strong> Returns all records from left table + matches from right</li>
+                <li><strong>RIGHT JOIN:</strong> Returns all records from right table + matches from left</li>
+                <li><strong>FULL OUTER JOIN:</strong> Returns all records when there's a match in either table</li>
+              </ul>
+              
+              <h2>4. Use CTEs for Complex Queries</h2>
+              <p>Common Table Expressions (CTEs) make complex queries more readable:</p>
+              
+              <pre><code>WITH monthly_sales AS (
+    SELECT 
+        DATE_TRUNC('month', order_date) AS month,
+        SUM(amount) AS total_sales
+    FROM orders
+    GROUP BY 1
+),
+sales_growth AS (
+    SELECT 
+        month,
+        total_sales,
+        LAG(total_sales) OVER (ORDER BY month) AS prev_month_sales
+    FROM monthly_sales
+)
+SELECT 
+    month,
+    total_sales,
+    ROUND((total_sales - prev_month_sales) / prev_month_sales * 100, 2) AS growth_pct
+FROM sales_growth;</code></pre>
+              
+              <h2>5. Optimize WHERE Clauses</h2>
+              <p>Filter early to reduce the dataset size before performing expensive operations:</p>
+              
+              <pre><code>-- Less efficient
+SELECT * FROM (
+    SELECT customer_id, SUM(amount) AS total
+    FROM orders
+    GROUP BY customer_id
+) subq
+WHERE total > 1000;
+
+-- More efficient
+SELECT customer_id, SUM(amount) AS total
+FROM orders
+WHERE amount > 0
+GROUP BY customer_id
+HAVING SUM(amount) > 1000;</code></pre>
+              
+              <h2>6. Use Window Functions</h2>
+              <p>Window functions are powerful tools for analytics:</p>
+              
+              <pre><code>-- Calculate running total
+SELECT 
+    order_date,
+    amount,
+    SUM(amount) OVER (ORDER BY order_date) AS running_total
+FROM orders;
+
+-- Rank customers by purchase amount
+SELECT 
+    customer_id,
+    total_spent,
+    RANK() OVER (ORDER BY total_spent DESC) AS spending_rank
+FROM customer_totals;</code></pre>
+              
+              <h2>7. Index Strategically</h2>
+              <p>Create indexes on columns frequently used in:</p>
+              <ul>
+                <li>WHERE clauses</li>
+                <li>JOIN conditions</li>
+                <li>ORDER BY statements</li>
+              </ul>
+              
+              <h2>8. Document Your Queries</h2>
+              <p>Use comments to explain complex logic:</p>
+              
+              <pre><code>/*
+ * This query calculates monthly recurring revenue (MRR)
+ * Excludes cancelled subscriptions and trial accounts
+ * Used for: Executive Dashboard - Revenue Metrics
+ */
+SELECT 
+    DATE_TRUNC('month', subscription_start) AS month,
+    COUNT(*) AS new_subscriptions,
+    SUM(monthly_price) AS new_mrr
+FROM subscriptions
+WHERE status != 'cancelled'
+    AND plan_type != 'trial'
+GROUP BY 1;</code></pre>
+              
+              <h2>Conclusion</h2>
+              <p>Following these SQL best practices will help you write cleaner, more efficient, and maintainable queries. Practice these techniques on real datasets, and they'll soon become second nature!</p>
+              
+              <p>In my next post, I'll dive deeper into advanced SQL techniques for data analysis. Stay tuned!</p>
+            </div>
+          </article>
+        </div>
+        
+        <!-- Sidebar -->
+        <aside class="blog-sidebar">
+          <!-- Search Card -->
+          <div class="blog-sidebar-card">
+            <h3 class="sidebar-title">Search</h3>
+            <form style="display: flex; gap: 10px;">
+              <input type="text" placeholder="Search posts..." style="flex: 1; padding: 10px; border: 1px solid var(--light-gray); border-radius: 6px;" />
+              <button type="submit" style="padding: 10px 15px; background: hsl(216, 72%, 56%); color: white; border: none; border-radius: 6px; cursor: pointer;"><ion-icon name="search"></ion-icon></button>
+            </form>
+          </div>
+          
+          <!-- Recent Posts -->
+          <div class="blog-sidebar-card">
+            <h3 class="sidebar-title">Recent Posts</h3>
+            <ul class="recent-posts-list">
+              <li class="recent-post-item">
+                <a href="test-1.html" class="recent-post-link">
+                  <div class="recent-post-title">Test 1 - Introduction to Data Analytics</div>
+                  <div class="recent-post-date">Jan 15, 2025</div>
+                </a>
+              </li>
+              <li class="recent-post-item">
+                <a href="test-2.html" class="recent-post-link">
+                  <div class="recent-post-title">Test 2 - SQL Best Practices</div>
+                  <div class="recent-post-date">Jan 20, 2025</div>
+                </a>
+              </li>
+              <li class="recent-post-item">
+                <a href="../index.html#blog" class="recent-post-link">
+                  <div class="recent-post-title">#100DaysOfAnalytics Portfolio</div>
+                  <div class="recent-post-date">2024</div>
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Categories -->
+          <div class="blog-sidebar-card">
+            <h3 class="sidebar-title">Categories</h3>
+            <ul class="categories-list">
+              <li class="category-item">
+                <a href="#" class="category-link">
+                  <span>Data Analytics</span>
+                  <span class="category-count">3</span>
+                </a>
+              </li>
+              <li class="category-item">
+                <a href="#" class="category-link">
+                  <span>SQL Tutorials</span>
+                  <span class="category-count">2</span>
+                </a>
+              </li>
+              <li class="category-item">
+                <a href="#" class="category-link">
+                  <span>Python</span>
+                  <span class="category-count">2</span>
+                </a>
+              </li>
+              <li class="category-item">
+                <a href="#" class="category-link">
+                  <span>Power BI</span>
+                  <span class="category-count">1</span>
+                </a>
+              </li>
+              <li class="category-item">
+                <a href="#" class="category-link">
+                  <span>Professional Growth</span>
+                  <span class="category-count">1</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Tags Cloud -->
+          <div class="blog-sidebar-card">
+            <h3 class="sidebar-title">Popular Tags</h3>
+            <div class="tags-cloud">
+              <a href="#" class="tag-item">Excel</a>
+              <a href="#" class="tag-item">SQL</a>
+              <a href="#" class="tag-item">Python</a>
+              <a href="#" class="tag-item">Power BI</a>
+              <a href="#" class="tag-item">Data Cleaning</a>
+              <a href="#" class="tag-item">EDA</a>
+              <a href="#" class="tag-item">Visualization</a>
+              <a href="#" class="tag-item">Azure</a>
+              <a href="#" class="tag-item">Snowflake</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Scripts -->
+  <script src="../assets/js/app.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
