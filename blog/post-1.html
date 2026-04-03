@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>In 12th STD, I Created a Blogging Website | Zakir Hussain</title>
+  <meta name="description" content="A short case-study about a school project that grew to 25K views — still useful for students." />
+  <link rel="canonical" href="https://codeverse-team.github.io/Zakir-Webdev/blog/post-1.html" />
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="../assets/images/avatar-1.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/blog.css" />
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Post-specific styles */
+    .blog-post-page { max-width: 900px; margin: 0 auto; padding: 20px; }
+    .post-header { margin-bottom: 30px; }
+    .post-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; color: var(--light-gray-70); font-size: var(--fs-6); }
+    .post-category { background: var(--border-gradient-onyx); padding: 4px 12px; border-radius: 20px; font-size: var(--fs-7); }
+    .post-title { font-size: 2rem; line-height: 1.3; margin-bottom: 10px; }
+    .post-banner { width: 100%; height: 400px; border-radius: 16px; overflow: hidden; margin-bottom: 30px; }
+    .post-banner img { width: 100%; height: 100%; object-fit: cover; }
+    .post-content { line-height: 1.8; color: var(--light-gray); font-size: var(--fs-4); }
+    .post-content h2 { color: var(--orange-yellow-crayola); margin-top: 30px; margin-bottom: 15px; font-size: 1.5rem; }
+    .post-content p { margin-bottom: 20px; }
+    .post-content ul { margin-bottom: 20px; padding-left: 20px; }
+    .post-content li { margin-bottom: 10px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; color: var(--orange-yellow-crayola); text-decoration: none; transition: var(--transition-1); }
+    .back-link:hover { gap: 12px; }
+    .sidebar-wrapper { display: flex; gap: 30px; margin-top: 40px; }
+    .main-post { flex: 1; }
+    .blog-sidebar { width: 280px; flex-shrink: 0; }
+    @media (max-width: 768px) {
+      .sidebar-wrapper { flex-direction: column; }
+      .blog-sidebar { width: 100%; }
+      .post-banner { height: 250px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- SIDEBAR -->
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+        <figure class="avatar-box">
+          <img src="../assets/images/my-avatar.png" alt="Zakir Hussain" width="84" />
+        </figure>
+        <div class="info-content">
+          <h1 class="name" title="Zakir Hussain">Zakir Hussain</h1>
+          <p class="title">Data Analyst</p>
+        </div>
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+      </div>
+      <div class="sidebar-info_more">
+        <div class="separator"></div>
+        <ul class="contacts-list">
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:zakirhussain132006@gmail.com" class="contact-link">zakirhussain132006@gmail.com</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a href="tel:+918828770829" class="contact-link">+91 8828770829</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <address>Mumbai, Maharashtra, India</address>
+            </div>
+          </li>
+        </ul>
+        <div class="separator"></div>
+        <ul class="social-list">
+          <li class="social-item"><a href="https://www.linkedin.com/in/zakirhussain13/" target="_blank" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+          <li class="social-item"><a href="https://www.instagram.com/zakir.preneur/" target="_blank" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li class="social-item"><a href="https://www.fiverr.com/s/qDgb81V" target="_blank" class="social-link"><ion-icon name="briefcase-outline"></ion-icon></a></li>
+          <li class="social-item"><a href="https://github.com/CodeVerse-team" target="_blank" class="social-link"><ion-icon name="logo-github"></ion-icon></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+      <!-- NAVBAR -->
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item"><button class="navbar-link" data-nav-link onclick="window.location.href='../index.html#about'">About</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link onclick="window.location.href='../index.html#resume'">Resume</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link onclick="window.location.href='../index.html#portfolio'">Portfolio</button></li>
+          <li class="navbar-item"><button class="navbar-link active" data-nav-link onclick="window.location.href='../index.html#blog'">Blog</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link onclick="window.location.href='../index.html#contact'">Contact</button></li>
+        </ul>
+      </nav>
+
+      <!-- BLOG POST -->
+      <article class="blog-post-page reveal visible">
+        <a href="../index.html#blog" class="back-link">
+          <ion-icon name="arrow-back"></ion-icon>
+          <span>Back to Blog</span>
+        </a>
+
+        <header class="post-header">
+          <div class="post-meta">
+            <span class="post-category">WebDevelopment</span>
+            <span class="dot"></span>
+            <time datetime="2023-02-13">Feb 13, 2023</time>
+            <span class="dot"></span>
+            <span>5 min read</span>
+          </div>
+          <h1 class="post-title">In 12th STD, I Created a Blogging Website</h1>
+        </header>
+
+        <figure class="post-banner">
+          <img src="../assets/images/blog-1.jpg" alt="Blogging Website Project" loading="lazy" />
+        </figure>
+
+        <div class="sidebar-wrapper">
+          <div class="main-post">
+            <div class="post-content">
+              <p>During my 12th standard, I embarked on an exciting journey of creating a blogging website as part of my school project. What started as a simple assignment turned into a platform that garnered over 25,000 views and continues to be a valuable resource for students.</p>
+
+              <h2>The Beginning</h2>
+              <p>The idea was born out of necessity. I noticed that many students in my school struggled to find reliable study resources and project ideas. I wanted to create a platform where students could share their experiences, projects, and learning journeys.</p>
+
+              <h2>Building the Platform</h2>
+              <p>I built the website using HTML, CSS, and JavaScript. The key features included:</p>
+              <ul>
+                <li><strong>User-friendly Interface:</strong> Clean and intuitive design for easy navigation</li>
+                <li><strong>Responsive Design:</strong> Accessible on both desktop and mobile devices</li>
+                <li><strong>Content Management:</strong> Easy-to-use system for posting and editing articles</li>
+                <li><strong>Search Functionality:</strong> Helping students find relevant content quickly</li>
+                <li><strong>Comment System:</strong> Enabling discussions and feedback</li>
+              </ul>
+
+              <h2>Challenges Faced</h2>
+              <p>Building this platform wasn't without its challenges. Some of the major hurdles included:</p>
+              <ul>
+                <li>Limited hosting options for a student project</li>
+                <li>Learning web development concepts from scratch</li>
+                <li>Balancing academics with development work</li>
+                <li>Ensuring the website could handle increasing traffic</li>
+              </ul>
+
+              <h2>Growth and Impact</h2>
+              <p>Within the first year, the website attracted students from multiple schools. The content ranged from project ideas and study tips to career guidance and exam preparation strategies. The positive feedback from users motivated me to continuously improve the platform.</p>
+
+              <h2>Key Learnings</h2>
+              <p>This project taught me invaluable lessons:</p>
+              <ul>
+                <li><strong>Technical Skills:</strong> Web development, database management, and server configuration</li>
+                <li><strong>Problem-Solving:</strong> Finding creative solutions to technical challenges</li>
+                <li><strong>User Experience:</strong> Understanding the importance of designing for the end-user</li>
+                <li><strong>Consistency:</strong> Regular updates and maintenance are crucial for success</li>
+              </ul>
+
+              <h2>Looking Back</h2>
+              <p>Today, this project remains one of my proudest achievements. It not only helped fellow students but also laid the foundation for my interest in technology and data. The experience of building, maintaining, and growing a real-world application gave me practical insights that textbooks couldn't provide.</p>
+
+              <p>For current students reading this: don't underestimate the power of a simple idea executed well. Your school projects can become something much bigger if you're passionate and persistent.</p>
+            </div>
+          </div>
+
+          <!-- SIDEBAR -->
+          <aside class="blog-sidebar">
+            <div class="sidebar-card">
+              <h3 class="sidebar-title">About the Author</h3>
+              <div class="author-info">
+                <img src="../assets/images/my-avatar.png" alt="Zakir Hussain" class="author-avatar" />
+                <h4>Zakir Hussain</h4>
+                <p>Data Analyst specializing in Excel, SQL, Python, and Power BI. Passionate about data storytelling and building insightful dashboards.</p>
+                <div class="author-social">
+                  <a href="https://www.linkedin.com/in/zakirhussain13/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+                  <a href="https://github.com/CodeVerse-team" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-card">
+              <h3 class="sidebar-title">Recent Posts</h3>
+              <ul class="recent-posts-list">
+                <li class="recent-post-item">
+                  <a href="post-1.html" class="recent-post-link">
+                    <span class="recent-post-title">In 12th STD, I Created a Blogging Website</span>
+                    <time datetime="2023-02-13">Feb 13, 2023</time>
+                  </a>
+                </li>
+                <li class="recent-post-item">
+                  <a href="#" class="recent-post-link">
+                    <span class="recent-post-title">Coming Soon: More Data Insights</span>
+                    <time datetime="2024-01-01">Stay Tuned</time>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="sidebar-card">
+              <h3 class="sidebar-title">Categories</h3>
+              <ul class="categories-list">
+                <li><a href="../index.html#blog">Web Development</a></li>
+                <li><a href="../index.html#blog">Data Analysis</a></li>
+                <li><a href="../index.html#blog">Tutorials</a></li>
+                <li><a href="../index.html#blog">Projects</a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  
+  <script>
+    // Sidebar toggle functionality
+    const sidebar = document.querySelector("[data-sidebar]");
+    const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+    
+    if (sidebarBtn && sidebar) {
+      sidebarBtn.addEventListener("click", function () {
+        sidebar.classList.toggle("active");
+      });
+    }
+
+    // Reveal animation on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+      const elementVisible = 100;
+      
+      reveals.forEach((reveal) => {
+        const elementTop = reveal.getBoundingClientRect().top;
+        if (elementTop < windowHeight - elementVisible) {
+          reveal.classList.add('visible');
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Check on page load
+  </script>
+</body>
+</html>
